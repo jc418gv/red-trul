@@ -183,6 +183,7 @@ async function makeFlacTranscode(outDir, inDir, files) {
 }
 
 async function probeMediaFile(path) {
+  let file = "'", path, "'"
   const { stdout } = await execFile("ffprobe", [
     "-v",
     "quiet",
@@ -190,7 +191,7 @@ async function probeMediaFile(path) {
     "-show_format",
     "-print_format",
     "json",
-    path,
+    file,
   ])
   return JSON.parse(stdout)
 }
